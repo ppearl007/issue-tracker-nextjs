@@ -2,9 +2,8 @@ import React from 'react'
 import Link from 'next/link'
 import { Button, Box, Heading, Text, Flex } from '@radix-ui/themes'
 import { prisma } from '@/prisma/client'
-import { FaTrash } from "react-icons/fa";
-import axios from 'axios'
 import DeleteButton from '../components/DeleteButton';
+import UpdateButton from '../components/UpdateButton';
 
 const IssuesPage = async () => {
 
@@ -31,7 +30,10 @@ const IssuesPage = async () => {
                                 <Text size="2" as="p">{issue.description}</Text>
                                 <Text size="1" as="p">{issue.status}</Text>
                             </Box>
-                            <DeleteButton id={issue.id} />
+                            <Flex gap="2">
+                                <UpdateButton id={issue.id} />
+                                <DeleteButton id={issue.id} />
+                            </Flex>
                         </Flex>
                     </Box>
                 ))}

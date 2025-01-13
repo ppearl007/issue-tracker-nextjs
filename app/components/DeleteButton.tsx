@@ -16,9 +16,7 @@ const DeleteButton = ({ id }: DeleteButtonProps) => {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`api/issues/${id}/`, {
-                method: 'delete',
-            })
+            await axios.delete(`api/issues/${id}/`)
             router.push('/issues')
         } catch (error) {
             console.error(error)
