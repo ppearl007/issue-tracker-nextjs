@@ -31,6 +31,8 @@ const UpdateIssuePage = ({ params }: any) => {
             const { issue } = await response.data;
             setTitle(issue.title);
             setDescription(issue.description);
+            setValue('title', issue.title)
+            setValue('description', issue.description)
         } else {
             console.error('Failed to fetch issue data');
         }
@@ -41,7 +43,7 @@ const UpdateIssuePage = ({ params }: any) => {
     }, []);
 
     const router = useRouter()
-    const { register, control, handleSubmit, formState: { errors } } = useForm<IssueForm>({
+    const { register, control, handleSubmit, setValue, formState: { errors } } = useForm<IssueForm>({
         resolver: zodResolver(createIssueSchema)
     })
 
